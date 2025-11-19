@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
     await sendPaymentEmail({
       userName: payment.user.name,
       userEmail: payment.user.email,
-      paymentAmount: payment.amount,
+      paymentAmount: payment.amount.toNumber(),
       paymentCurrency: payment.currency,
       paymentMethod: payment.paymentMethod,
       paymentDate: new Date(payment.paymentDate).toLocaleDateString("pt-BR"),
