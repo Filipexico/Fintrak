@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
       },
     })
 
-    logger.info(`Planos encontrados: ${plans.length}`, undefined, { count: plans.length })
+    logger.info(`Planos encontrados: ${plans.length}`, { count: plans.length })
 
     return NextResponse.json(plans)
   } catch (error) {
