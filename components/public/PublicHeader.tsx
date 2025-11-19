@@ -37,7 +37,7 @@ export function PublicHeader() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-8">
           <Link href="/signup">
             <Button variant="default" className="bg-primary hover:bg-primary/90">Cadastrar</Button>
           </Link>
