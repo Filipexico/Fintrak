@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "Startseite",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "faq": "FAQ",
+    "signup": "Registrieren",
+    "login": "Anmelden",
+    "dashboard": "Dashboard",
+    "getStarted": "Loslegen",
+    "startFree": "Kostenlos starten",
+    "seePlans": "Pläne ansehen",
+    "signUpNow": "Jetzt registrieren",
+    "learnMore": "Mehr erfahren"
+  },
+  "footer": {
+    "description": "Finanzkontrolle für Lieferfahrer",
+    "product": "Produkt",
+    "support": "Support",
+    "account": "Konto",
+    "copyright": "© {year} DeliveryControl. Alle Rechte vorbehalten."
+  },
+  "signup": {
+    "title": "Konto erstellen",
+    "description": "Wählen Sie einen Plan und erstellen Sie Ihr Konto",
+    "choosePlan": "Wählen Sie Ihren Plan",
+    "free": "Kostenlos",
+    "perMonth": "/Monat",
+    "unlimitedVehicles": "Unbegrenzte Fahrzeuge",
+    "unlimitedPlatforms": "Unbegrenzte Plattformen",
+    "vehicles": "Fahrzeug",
+    "vehiclesPlural": "Fahrzeuge",
+    "platforms": "Plattform",
+    "platformsPlural": "Plattformen",
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "country": "Land",
+    "countryPlaceholder": "DE, US, etc.",
+    "currency": "Währung",
+    "language": "Sprache",
+    "createAccount": "Konto erstellen",
+    "creating": "Konto wird erstellt...",
+    "loadingPlans": "Pläne werden geladen...",
+    "nameRequired": "Name ist erforderlich",
+    "emailRequired": "E-Mail ist erforderlich",
+    "passwordRequired": "Passwort ist erforderlich",
+    "passwordsMustMatch": "Passwörter müssen übereinstimmen",
+    "success": {
+      "created": "Konto erfolgreich erstellt! Weiterleitung..."
+    },
+    "error": {
+      "creating": "Fehler beim Erstellen des Kontos",
+      "generic": "Fehler beim Erstellen des Kontos. Bitte versuchen Sie es erneut."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Wissen Sie genau, wie viel Sie als Lieferfahrer wirklich verdienen",
+      "subtitle": "Verfolgen Sie Einnahmen, Ausgaben, Fahrzeugnutzung und berechnen Sie Ihren echten Gewinn und Steuerschätzungen. Übernehmen Sie die Kontrolle über Ihre Finanzen.",
+      "ctaPrimary": "Kostenlos starten",
+      "ctaSecondary": "Pläne ansehen"
+    },
+    "benefits": {
+      "title": "Wie es Ihnen hilft",
+      "trackApps": {
+        "title": "Verfolgen Sie alle Ihre Apps an einem Ort",
+        "description": "Uber Eats, Wolt, Lieferando - verwalten Sie alle Ihre Lieferplattformen von einem einzigen Dashboard aus."
+      },
+      "controlCosts": {
+        "title": "Kontrollieren Sie Ihre Kosten",
+        "description": "Verfolgen Sie Kraftstoff, Wartung, Handyrechnung und alle Ausgaben. Wissen Sie genau, wohin Ihr Geld fließt."
+      },
+      "realProfit": {
+        "title": "Verstehen Sie Ihren echten Gewinn",
+        "description": "Sehen Sie Ihre tatsächlichen Einnahmen nach Ausgaben und Steuerschätzungen. Hören Sie auf zu raten, beginnen Sie zu verwalten."
+      },
+      "compare": {
+        "title": "Vergleichen und optimieren",
+        "description": "Vergleichen Sie Tage, Monate und Plattformen, um zu sehen, was wirklich funktioniert. Treffen Sie datengestützte Entscheidungen."
+      }
+    },
+    "audience": {
+      "title": "Für wen ist das?",
+      "description": "Perfekt für Lieferfahrer, die arbeiten mit:",
+      "fullTime": "Vollzeitfahrer",
+      "partTime": "Teilzeitfahrer",
+      "multipleApps": "Fahrer, die mehrere Apps nutzen",
+      "vehicleTypes": "Fahrrad, Motorrad oder Auto"
+    },
+    "cta": {
+      "title": "Bereit, die Kontrolle zu übernehmen?",
+      "description": "Beginnen Sie heute mit der Verfolgung Ihrer Finanzen. Keine Kreditkarte erforderlich.",
+      "button": "Kostenlos starten"
+    }
+  },
+  "features": {
+    "title": "Alles, was Sie brauchen, um Ihr Liefergeschäft zu verwalten",
+    "financial": {
+      "title": "Finanzverfolgung",
+      "description": "Verfolgen Sie Einnahmen von jeder Liefer-App und privaten Kunden. Sehen Sie Ihre Einnahmen auf einen Blick."
+    },
+    "expenses": {
+      "title": "Ausgabenverwaltung",
+      "description": "Erfassen Sie Kraftstoff, Wartung, Versicherung, Handyrechnung und alle Ihre Kosten. Kennen Sie Ihre echten Ausgaben."
+    },
+    "vehicles": {
+      "title": "Fahrzeug- und Entfernungsverfolgung",
+      "description": "Verfolgen Sie Kilometer pro Tag, Kraftstoffverbrauch, Effizienz (km/L oder km/kWh). Überwachen Sie Ihre Fahrzeugnutzung."
+    },
+    "reports": {
+      "title": "Dashboards & Berichte",
+      "description": "Tägliche, monatliche und jährliche Berichte. Vergleichen Sie Perioden, sehen Sie Trends und treffen Sie fundierte Entscheidungen."
+    },
+    "tax": {
+      "title": "Steuerschätzung",
+      "description": "Erhalten Sie Steuerschätzungen basierend auf Ihrem Land. Planen Sie voraus und vermeiden Sie Überraschungen."
+    }
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Plan, der zu Ihren Bedürfnissen passt",
+    "free": {
+      "name": "Kostenlos",
+      "price": "0",
+      "period": "/Monat",
+      "description": "Perfekt zum Einstieg",
+      "features": {
+        "vehicles": "1 Fahrzeug",
+        "platforms": "1 Lieferplattform",
+        "tracking": "Einnahmen- und Ausgabenverfolgung",
+        "dashboard": "Basis-Dashboard",
+        "reports": "Basis-Berichte"
+      },
+      "cta": "Kostenlos starten"
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "3",
+      "period": "/Monat",
+      "description": "Für ernsthafte Fahrer",
+      "badge": "Beliebt",
+      "features": {
+        "vehicles": "2 Fahrzeuge",
+        "platforms": "2 Lieferplattformen",
+        "tracking": "Alle kostenlosen Funktionen",
+        "reports": "Erweiterte Berichte und Diagramme",
+        "comparisons": "Monatliche Aufschlüsselungen"
+      },
+      "cta": "Plus wählen"
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "5",
+      "period": "/Monat",
+      "description": "Für Profis",
+      "badge": "Am beliebtesten",
+      "features": {
+        "vehicles": "Unbegrenzte Fahrzeuge",
+        "platforms": "Unbegrenzte Plattformen",
+        "tracking": "Alle Plus-Funktionen",
+        "analytics": "Vollständige erweiterte Analysen",
+        "support": "Prioritätssupport"
+      },
+      "cta": "Premium wählen"
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "questions": {
+      "q1": {
+        "question": "Muss ich meine Liefer-Apps direkt verbinden?",
+        "answer": "Nein, Sie geben Ihre Einnahmen und Ausgaben manuell ein. Dies gibt Ihnen volle Kontrolle und Privatsphäre über Ihre Daten."
+      },
+      "q2": {
+        "question": "Kann ich kostenlos testen?",
+        "answer": "Ja! Der kostenlose Plan ermöglicht es Ihnen, 1 Fahrzeug und 1 Plattform zu verfolgen. Keine Kreditkarte erforderlich."
+      },
+      "q3": {
+        "question": "Kann ich jederzeit kündigen?",
+        "answer": "Absolut. Kündigen Sie Ihr Abonnement jederzeit. Keine Fragen gestellt."
+      },
+      "q4": {
+        "question": "Was ist, wenn ich mehr als eine App verwende?",
+        "answer": "Perfekt! Verfolgen Sie alle Ihre Lieferplattformen an einem Ort. Vergleichen Sie Einnahmen und sehen Sie, welche Apps für Sie am besten funktionieren."
+      },
+      "q5": {
+        "question": "Wie werden meine Daten gespeichert und gesichert?",
+        "answer": "Ihre Daten sind verschlüsselt und sicher gespeichert. Wir teilen Ihre Informationen niemals mit Dritten."
+      }
+    }
+  }
+}
+
+
+

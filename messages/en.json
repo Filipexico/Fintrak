@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "signup": "Sign Up",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "getStarted": "Get Started",
+    "startFree": "Start for Free",
+    "seePlans": "See Plans",
+    "signUpNow": "Sign Up Now",
+    "learnMore": "Learn More"
+  },
+  "footer": {
+    "description": "Financial control for delivery drivers",
+    "product": "Product",
+    "support": "Support",
+    "account": "Account",
+    "copyright": "© {year} DeliveryControl. All rights reserved."
+  },
+  "signup": {
+    "title": "Create Account",
+    "description": "Choose a plan and create your account",
+    "choosePlan": "Choose your plan",
+    "free": "Free",
+    "perMonth": "/month",
+    "unlimitedVehicles": "Unlimited vehicles",
+    "unlimitedPlatforms": "Unlimited platforms",
+    "vehicles": "vehicle",
+    "vehiclesPlural": "vehicles",
+    "platforms": "platform",
+    "platformsPlural": "platforms",
+    "fullName": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "country": "Country",
+    "countryPlaceholder": "BR, US, etc.",
+    "currency": "Currency",
+    "language": "Language",
+    "createAccount": "Create Account",
+    "creating": "Creating account...",
+    "loadingPlans": "Loading plans...",
+    "nameRequired": "Name is required",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "passwordsMustMatch": "Passwords must match",
+    "success": {
+      "created": "Account created successfully! Redirecting..."
+    },
+    "error": {
+      "creating": "Error creating account",
+      "generic": "Error creating account. Please try again."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Know exactly how much you really earn as a delivery driver",
+      "subtitle": "Track income, expenses, vehicle usage and calculate your real profit and tax estimates. Take control of your finances.",
+      "ctaPrimary": "Start for Free",
+      "ctaSecondary": "See Plans"
+    },
+    "benefits": {
+      "title": "How it helps you",
+      "trackApps": {
+        "title": "Track all your apps in one place",
+        "description": "Uber Eats, iFood, Wolt, 99Food - manage all your delivery platforms from a single dashboard."
+      },
+      "controlCosts": {
+        "title": "Control your costs",
+        "description": "Track fuel, maintenance, phone bills and all expenses. Know exactly where your money goes."
+      },
+      "realProfit": {
+        "title": "Understand your real profit",
+        "description": "See your actual earnings after expenses and tax estimates. Stop guessing, start managing."
+      },
+      "compare": {
+        "title": "Compare and optimize",
+        "description": "Compare days, months and platforms to see what really works. Make data-driven decisions."
+      }
+    },
+    "audience": {
+      "title": "Who is this for?",
+      "description": "Perfect for delivery drivers working with:",
+      "fullTime": "Full-time drivers",
+      "partTime": "Part-time drivers",
+      "multipleApps": "Drivers using multiple apps",
+      "vehicleTypes": "Bike, motorbike or car drivers"
+    },
+    "cta": {
+      "title": "Ready to take control?",
+      "description": "Start tracking your finances today. No credit card required.",
+      "button": "Start for Free"
+    }
+  },
+  "features": {
+    "title": "Everything you need to manage your delivery business",
+    "financial": {
+      "title": "Financial Tracking",
+      "description": "Track income from each delivery app and private clients. See your earnings at a glance."
+    },
+    "expenses": {
+      "title": "Expense Management",
+      "description": "Record fuel, maintenance, insurance, phone bills and all your costs. Know your real expenses."
+    },
+    "vehicles": {
+      "title": "Vehicle & Distance Tracking",
+      "description": "Track kilometers per day, fuel consumption, efficiency (km/L or km/kWh). Monitor your vehicle usage."
+    },
+    "reports": {
+      "title": "Dashboards & Reports",
+      "description": "Daily, monthly and yearly reports. Compare periods, see trends and make informed decisions."
+    },
+    "tax": {
+      "title": "Tax Estimation",
+      "description": "Get tax estimates based on your country. Plan ahead and avoid surprises."
+    }
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "Choose the plan that fits your needs",
+    "free": {
+      "name": "Free",
+      "price": "0",
+      "period": "/month",
+      "description": "Perfect to get started",
+      "features": {
+        "vehicles": "1 vehicle",
+        "platforms": "1 delivery platform",
+        "tracking": "Income & expense tracking",
+        "dashboard": "Basic dashboard",
+        "reports": "Basic reports"
+      },
+      "cta": "Start Free"
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "3",
+      "period": "/month",
+      "description": "For serious drivers",
+      "badge": "Popular",
+      "features": {
+        "vehicles": "2 vehicles",
+        "platforms": "2 delivery platforms",
+        "tracking": "All Free features",
+        "reports": "Enhanced reports and charts",
+        "comparisons": "Monthly breakdowns"
+      },
+      "cta": "Choose Plus"
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "5",
+      "period": "/month",
+      "description": "For professionals",
+      "badge": "Most Popular",
+      "features": {
+        "vehicles": "Unlimited vehicles",
+        "platforms": "Unlimited platforms",
+        "tracking": "All Plus features",
+        "analytics": "Full advanced analytics",
+        "support": "Priority support"
+      },
+      "cta": "Choose Premium"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "q1": {
+        "question": "Do I need to connect my delivery apps directly?",
+        "answer": "No, you manually enter your income and expenses. This gives you full control and privacy over your data."
+      },
+      "q2": {
+        "question": "Can I test for free?",
+        "answer": "Yes! The Free plan lets you track 1 vehicle and 1 platform. No credit card required."
+      },
+      "q3": {
+        "question": "Can I cancel anytime?",
+        "answer": "Absolutely. Cancel your subscription at any time. No questions asked."
+      },
+      "q4": {
+        "question": "What if I use more than one app?",
+        "answer": "Perfect! Track all your delivery platforms in one place. Compare earnings and see which apps work best for you."
+      },
+      "q5": {
+        "question": "How is my data stored and secured?",
+        "answer": "Your data is encrypted and stored securely. We never share your information with third parties."
+      }
+    }
+  }
+}
+
+
+

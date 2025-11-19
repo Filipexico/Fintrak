@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "Início",
+    "features": "Funcionalidades",
+    "pricing": "Preços",
+    "faq": "Perguntas",
+    "signup": "Cadastrar",
+    "login": "Entrar",
+    "dashboard": "Painel",
+    "getStarted": "Começar",
+    "startFree": "Começar Grátis",
+    "seePlans": "Ver Planos",
+    "signUpNow": "Cadastre-se Agora",
+    "learnMore": "Saiba Mais"
+  },
+  "footer": {
+    "description": "Controle financeiro para entregadores",
+    "product": "Produto",
+    "support": "Suporte",
+    "account": "Conta",
+    "copyright": "© {year} DeliveryControl. Todos os direitos reservados."
+  },
+  "signup": {
+    "title": "Criar Conta",
+    "description": "Escolha um plano e crie sua conta",
+    "choosePlan": "Escolha seu plano",
+    "free": "Grátis",
+    "perMonth": "/mês",
+    "unlimitedVehicles": "Veículos ilimitados",
+    "unlimitedPlatforms": "Plataformas ilimitadas",
+    "vehicles": "veículo",
+    "vehiclesPlural": "veículos",
+    "platforms": "plataforma",
+    "platformsPlural": "plataformas",
+    "fullName": "Nome completo",
+    "email": "Email",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "country": "País",
+    "countryPlaceholder": "BR, US, etc.",
+    "currency": "Moeda",
+    "language": "Idioma",
+    "createAccount": "Criar Conta",
+    "creating": "Criando conta...",
+    "loadingPlans": "Carregando planos...",
+    "nameRequired": "Nome é obrigatório",
+    "emailRequired": "Email é obrigatório",
+    "passwordRequired": "Senha é obrigatória",
+    "passwordsMustMatch": "As senhas devem coincidir",
+    "success": {
+      "created": "Conta criada com sucesso! Redirecionando..."
+    },
+    "error": {
+      "creating": "Erro ao criar conta",
+      "generic": "Erro ao criar conta. Tente novamente."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Saiba exatamente quanto você realmente ganha como entregador",
+      "subtitle": "Acompanhe receitas, despesas, uso de veículos e calcule seu lucro real e estimativas de impostos. Tenha controle total das suas finanças.",
+      "ctaPrimary": "Começar Grátis",
+      "ctaSecondary": "Ver Planos"
+    },
+    "benefits": {
+      "title": "Como isso te ajuda",
+      "trackApps": {
+        "title": "Acompanhe todos os seus apps em um só lugar",
+        "description": "Uber Eats, iFood, Wolt, 99Food - gerencie todas as suas plataformas de entrega em um único painel."
+      },
+      "controlCosts": {
+        "title": "Controle seus custos",
+        "description": "Acompanhe combustível, manutenção, conta do celular e todas as despesas. Saiba exatamente para onde vai seu dinheiro."
+      },
+      "realProfit": {
+        "title": "Entenda seu lucro real",
+        "description": "Veja seus ganhos reais após despesas e estimativas de impostos. Pare de adivinhar, comece a gerenciar."
+      },
+      "compare": {
+        "title": "Compare e otimize",
+        "description": "Compare dias, meses e plataformas para ver o que realmente funciona. Tome decisões baseadas em dados."
+      }
+    },
+    "audience": {
+      "title": "Para quem é isso?",
+      "description": "Perfeito para entregadores que trabalham com:",
+      "fullTime": "Motoboys em tempo integral",
+      "partTime": "Entregadores em tempo parcial",
+      "multipleApps": "Quem usa vários apps",
+      "vehicleTypes": "Moto, bicicleta ou carro"
+    },
+    "cta": {
+      "title": "Pronto para ter controle?",
+      "description": "Comece a acompanhar suas finanças hoje. Não precisa de cartão de crédito.",
+      "button": "Começar Grátis"
+    }
+  },
+  "features": {
+    "title": "Tudo que você precisa para gerenciar seu negócio de entregas",
+    "financial": {
+      "title": "Acompanhamento Financeiro",
+      "description": "Acompanhe receitas de cada app de entrega e clientes particulares. Veja seus ganhos de relance."
+    },
+    "expenses": {
+      "title": "Gestão de Despesas",
+      "description": "Registre combustível, manutenção, seguro, conta do celular e todos os seus custos. Conheça suas despesas reais."
+    },
+    "vehicles": {
+      "title": "Acompanhamento de Veículos e Distância",
+      "description": "Acompanhe quilômetros por dia, consumo de combustível, eficiência (km/L ou km/kWh). Monitore o uso do seu veículo."
+    },
+    "reports": {
+      "title": "Painéis e Relatórios",
+      "description": "Relatórios diários, mensais e anuais. Compare períodos, veja tendências e tome decisões informadas."
+    },
+    "tax": {
+      "title": "Estimativa de Impostos",
+      "description": "Obtenha estimativas de impostos baseadas no seu país. Planeje com antecedência e evite surpresas."
+    }
+  },
+  "pricing": {
+    "title": "Preços simples e transparentes",
+    "subtitle": "Escolha o plano que atende suas necessidades",
+    "free": {
+      "name": "Grátis",
+      "price": "0",
+      "period": "/mês",
+      "description": "Perfeito para começar",
+      "features": {
+        "vehicles": "1 veículo",
+        "platforms": "1 plataforma de entrega",
+        "tracking": "Acompanhamento de receitas e despesas",
+        "dashboard": "Painel básico",
+        "reports": "Relatórios básicos"
+      },
+      "cta": "Começar Grátis"
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "3",
+      "period": "/mês",
+      "description": "Para entregadores sérios",
+      "badge": "Popular",
+      "features": {
+        "vehicles": "2 veículos",
+        "platforms": "2 plataformas de entrega",
+        "tracking": "Todas as funcionalidades Grátis",
+        "reports": "Relatórios e gráficos aprimorados",
+        "comparisons": "Análises mensais detalhadas"
+      },
+      "cta": "Escolher Plus"
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "5",
+      "period": "/mês",
+      "description": "Para profissionais",
+      "badge": "Mais Popular",
+      "features": {
+        "vehicles": "Veículos ilimitados",
+        "platforms": "Plataformas ilimitadas",
+        "tracking": "Todas as funcionalidades Plus",
+        "analytics": "Análises avançadas completas",
+        "support": "Suporte prioritário"
+      },
+      "cta": "Escolher Premium"
+    }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "questions": {
+      "q1": {
+        "question": "Preciso conectar meus apps de entrega diretamente?",
+        "answer": "Não, você insere manualmente suas receitas e despesas. Isso te dá controle total e privacidade sobre seus dados."
+      },
+      "q2": {
+        "question": "Posso testar grátis?",
+        "answer": "Sim! O plano Grátis permite acompanhar 1 veículo e 1 plataforma. Não precisa de cartão de crédito."
+      },
+      "q3": {
+        "question": "Posso cancelar a qualquer momento?",
+        "answer": "Absolutamente. Cancele sua assinatura a qualquer momento. Sem perguntas."
+      },
+      "q4": {
+        "question": "E se eu uso mais de um app?",
+        "answer": "Perfeito! Acompanhe todas as suas plataformas de entrega em um só lugar. Compare ganhos e veja quais apps funcionam melhor para você."
+      },
+      "q5": {
+        "question": "Como meus dados são armazenados e protegidos?",
+        "answer": "Seus dados são criptografados e armazenados com segurança. Nunca compartilhamos suas informações com terceiros."
+      }
+    }
+  }
+}
+
+
+

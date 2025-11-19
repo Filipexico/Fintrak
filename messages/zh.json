@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "首页",
+    "features": "功能",
+    "pricing": "价格",
+    "faq": "常见问题",
+    "signup": "注册",
+    "login": "登录",
+    "dashboard": "仪表板",
+    "getStarted": "开始使用",
+    "startFree": "免费开始",
+    "seePlans": "查看计划",
+    "signUpNow": "立即注册",
+    "learnMore": "了解更多"
+  },
+  "footer": {
+    "description": "配送员的财务控制",
+    "product": "产品",
+    "support": "支持",
+    "account": "账户",
+    "copyright": "© {year} DeliveryControl. 保留所有权利。"
+  },
+  "signup": {
+    "title": "创建账户",
+    "description": "选择计划并创建您的账户",
+    "choosePlan": "选择您的计划",
+    "free": "免费",
+    "perMonth": "/月",
+    "unlimitedVehicles": "无限车辆",
+    "unlimitedPlatforms": "无限平台",
+    "vehicles": "辆车",
+    "vehiclesPlural": "辆车",
+    "platforms": "个平台",
+    "platformsPlural": "个平台",
+    "fullName": "全名",
+    "email": "电子邮件",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "country": "国家",
+    "countryPlaceholder": "CN, US, 等",
+    "currency": "货币",
+    "language": "语言",
+    "createAccount": "创建账户",
+    "creating": "正在创建账户...",
+    "loadingPlans": "正在加载计划...",
+    "nameRequired": "姓名是必需的",
+    "emailRequired": "电子邮件是必需的",
+    "passwordRequired": "密码是必需的",
+    "passwordsMustMatch": "密码必须匹配",
+    "success": {
+      "created": "账户创建成功！正在重定向..."
+    },
+    "error": {
+      "creating": "创建账户时出错",
+      "generic": "创建账户时出错。请重试。"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "准确了解您作为配送员实际赚取多少",
+      "subtitle": "跟踪收入、支出、车辆使用情况，计算您的实际利润和税务估算。掌控您的财务。",
+      "ctaPrimary": "免费开始",
+      "ctaSecondary": "查看计划"
+    },
+    "benefits": {
+      "title": "它如何帮助您",
+      "trackApps": {
+        "title": "在一个地方跟踪所有应用",
+        "description": "Uber Eats、Wolt、美团 - 从单一仪表板管理所有配送平台。"
+      },
+      "controlCosts": {
+        "title": "控制您的成本",
+        "description": "跟踪燃料、维护、电话账单和所有支出。准确了解您的钱花在哪里。"
+      },
+      "realProfit": {
+        "title": "了解您的实际利润",
+        "description": "查看扣除支出和税务估算后的实际收入。停止猜测，开始管理。"
+      },
+      "compare": {
+        "title": "比较和优化",
+        "description": "比较天数、月份和平台，了解真正有效的方法。做出数据驱动的决策。"
+      }
+    },
+    "audience": {
+      "title": "适合谁？",
+      "description": "非常适合与以下平台合作的配送员：",
+      "fullTime": "全职司机",
+      "partTime": "兼职司机",
+      "multipleApps": "使用多个应用的司机",
+      "vehicleTypes": "自行车、摩托车或汽车司机"
+    },
+    "cta": {
+      "title": "准备好掌控了吗？",
+      "description": "今天开始跟踪您的财务。无需信用卡。",
+      "button": "免费开始"
+    }
+  },
+  "features": {
+    "title": "管理配送业务所需的一切",
+    "financial": {
+      "title": "财务跟踪",
+      "description": "跟踪每个配送应用和私人客户的收入。一目了然地查看您的收入。"
+    },
+    "expenses": {
+      "title": "支出管理",
+      "description": "记录燃料、维护、保险、电话账单和所有成本。了解您的实际支出。"
+    },
+    "vehicles": {
+      "title": "车辆和距离跟踪",
+      "description": "跟踪每日公里数、燃料消耗、效率（公里/升或公里/千瓦时）。监控您的车辆使用情况。"
+    },
+    "reports": {
+      "title": "仪表板和报告",
+      "description": "每日、每月和年度报告。比较时间段，查看趋势并做出明智的决策。"
+    },
+    "tax": {
+      "title": "税务估算",
+      "description": "根据您的国家/地区获得税务估算。提前计划，避免意外。"
+    }
+  },
+  "pricing": {
+    "title": "简单透明的定价",
+    "subtitle": "选择适合您需求的计划",
+    "free": {
+      "name": "免费",
+      "price": "0",
+      "period": "/月",
+      "description": "完美入门",
+      "features": {
+        "vehicles": "1辆车",
+        "platforms": "1个配送平台",
+        "tracking": "收入和支出跟踪",
+        "dashboard": "基本仪表板",
+        "reports": "基本报告"
+      },
+      "cta": "免费开始"
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "3",
+      "period": "/月",
+      "description": "适合认真工作的司机",
+      "badge": "热门",
+      "features": {
+        "vehicles": "2辆车",
+        "platforms": "2个配送平台",
+        "tracking": "所有免费功能",
+        "reports": "增强的报告和图表",
+        "comparisons": "月度明细"
+      },
+      "cta": "选择Plus"
+    },
+    "premium": {
+      "name": "高级版",
+      "price": "5",
+      "period": "/月",
+      "description": "适合专业人士",
+      "badge": "最受欢迎",
+      "features": {
+        "vehicles": "无限车辆",
+        "platforms": "无限平台",
+        "tracking": "所有Plus功能",
+        "analytics": "完整的高级分析",
+        "support": "优先支持"
+      },
+      "cta": "选择高级版"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "questions": {
+      "q1": {
+        "question": "我需要直接连接我的配送应用吗？",
+        "answer": "不需要，您手动输入收入和支出。这使您对数据拥有完全的控制权和隐私。"
+      },
+      "q2": {
+        "question": "我可以免费试用吗？",
+        "answer": "可以！免费计划允许您跟踪1辆车和1个平台。无需信用卡。"
+      },
+      "q3": {
+        "question": "我可以随时取消吗？",
+        "answer": "绝对可以。随时取消您的订阅。无需询问。"
+      },
+      "q4": {
+        "question": "如果我使用多个应用怎么办？",
+        "answer": "完美！在一个地方跟踪所有配送平台。比较收入，了解哪些应用最适合您。"
+      },
+      "q5": {
+        "question": "我的数据如何存储和保护？",
+        "answer": "您的数据经过加密并安全存储。我们永远不会与第三方共享您的信息。"
+      }
+    }
+  }
+}
+
+
+

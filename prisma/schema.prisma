@@ -1,0 +1,284 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ExpenseCategory {
+  fuel
+  insurance
+  phone
+  maintenance
+  food
+  parking
+  tolls
+  other
+}
+
+enum SubscriptionStatus {
+  active
+  canceled
+  trial
+  overdue
+}
+
+enum PaymentStatus {
+  paid
+  failed
+  refunded
+  pending
+}
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  password         String
+  name             String
+  country          String // ISO country code (BR, US, etc.)
+  currency         String   @default("BRL") // Currency code (BRL, USD, EUR, etc.)
+  language         String   @default("pt-BR") // ISO language code (pt-BR, en-US, es-ES, etc.)
+  currentVehicleId String? // Optional: current/default vehicle for new logs
+  role             UserRole @default(USER)
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  platforms      Platform[]
+  incomes        Income[]
+  expenses       Expense[]
+  subscriptions  Subscription[]
+  payments       Payment[]
+  vehicles       Vehicle[]
+  usageLogs      UsageLog[]
+  maintenances   Maintenance[]
+  currentVehicle Vehicle?       @relation("CurrentVehicle", fields: [vehicleId], references: [id])
+  vehicleId      String?
+
+  @@index([email])
+  @@index([role])
+  @@index([isActive])
+  @@index([currentVehicleId])
+  @@map("users")
+}
+
+model Platform {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  incomes Income[]
+
+  @@index([userId])
+  @@index([userId, isActive])
+  @@map("platforms")
+}
+
+model Income {
+  id          String   @id @default(cuid())
+  userId      String
+  platformId  String?
+  amount      Decimal  @db.Decimal(10, 2)
+  currency    String   @default("BRL")
+  date        DateTime
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  platform Platform? @relation(fields: [platformId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([userId, date])
+  @@index([platformId])
+  @@map("incomes")
+}
+
+model Expense {
+  id          String          @id @default(cuid())
+  userId      String
+  category    ExpenseCategory
+  amount      Decimal         @db.Decimal(10, 2)
+  currency    String          @default("BRL")
+  date        DateTime
+  description String?         @db.Text
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, date])
+  @@index([userId, category])
+  @@map("expenses")
+}
+
+model TaxRule {
+  id          String   @id @default(cuid())
+  country     String   @unique // ISO country code (BR, US, etc.)
+  displayName String
+  percentage  Decimal  @db.Decimal(5, 4) // e.g., 0.1500 = 15%
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([country])
+  @@index([isActive])
+  @@map("tax_rules")
+}
+
+model Plan {
+  id           String   @id @default(cuid())
+  name         String   @unique // e.g., "free", "plus", "premium"
+  displayName  String
+  priceMonthly Decimal  @db.Decimal(10, 2)
+  description  String?  @db.Text
+  maxVehicles  Int?     // null = unlimited, otherwise max number of vehicles
+  maxPlatforms Int?     // null = unlimited, otherwise max number of platforms
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  subscriptions Subscription[]
+
+  @@index([name])
+  @@index([isActive])
+  @@map("plans")
+}
+
+model Subscription {
+  id              String             @id @default(cuid())
+  userId          String
+  planId          String
+  status          SubscriptionStatus @default(trial)
+  startDate       DateTime
+  endDate         DateTime?
+  nextBillingDate DateTime?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan     Plan      @relation(fields: [planId], references: [id], onDelete: Restrict)
+  payments Payment[]
+
+  @@index([userId])
+  @@index([planId])
+  @@index([status])
+  @@index([startDate])
+  @@index([nextBillingDate])
+  @@map("subscriptions")
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  userId         String
+  subscriptionId String?
+  amount         Decimal       @db.Decimal(10, 2)
+  currency       String        @default("BRL")
+  paymentDate    DateTime
+  paymentMethod  String // e.g., "card", "paypal", "manual", "pix", "bank_transfer"
+  status         PaymentStatus @default(pending)
+  description    String?       @db.Text
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  // Relations
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([subscriptionId])
+  @@index([status])
+  @@index([paymentDate])
+  @@index([paymentMethod])
+  @@map("payments")
+}
+
+model Vehicle {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String // e.g., "Honda NX500", "Car", "Bike"
+  type      String? // e.g., "motorbike", "car", "bike", "scooter", "other"
+  plate     String? // optional license plate
+  fuelType  String? // e.g., "gasoline", "diesel", "ethanol", "electric", "hybrid", "other"
+  notes     String?  @db.Text
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  usageLogs    UsageLog[]
+  maintenances Maintenance[]
+  currentUsers User[]       @relation("CurrentVehicle")
+
+  @@index([userId])
+  @@index([userId, isActive])
+  @@map("vehicles")
+}
+
+model UsageLog {
+  id         String   @id @default(cuid())
+  userId     String
+  vehicleId  String
+  date       DateTime
+  distanceKm Decimal  @db.Decimal(10, 2) // km driven that day
+  fuelLiters Decimal? @db.Decimal(10, 2) // optional, for fuel vehicles (gasoline, diesel, etc.)
+  energyKwh  Decimal? @db.Decimal(10, 2) // optional, for electric vehicles
+  notes      String?  @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([vehicleId])
+  @@index([userId, date])
+  @@map("usage_logs")
+}
+
+model Maintenance {
+  id          String   @id @default(cuid())
+  userId      String
+  vehicleId   String
+  date        DateTime
+  type        String   // e.g., "oil_change", "tire_change", "brake_service", "battery_check", "general", "other"
+  description String?  @db.Text
+  cost        Decimal? @db.Decimal(10, 2) // optional cost
+  currency    String   @default("BRL")
+  mileage     Decimal? @db.Decimal(10, 2) // optional mileage/odometer reading
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([vehicleId])
+  @@index([userId, date])
+  @@map("maintenances")
+}
