@@ -41,7 +41,18 @@ export function LoginForm() {
       })
 
       if (result?.error) {
-        const errorMsg = result.error || "Email ou senha inválidos. Por favor, verifique suas credenciais e tente novamente."
+        console.error("Login error:", result.error)
+        let errorMsg = result.error || "Email ou senha inválidos. Por favor, verifique suas credenciais e tente novamente."
+        
+        // Mensagens de erro mais específicas
+        if (result.error.includes("credentials") || result.error.includes("Email ou senha")) {
+          errorMsg = "Email ou senha inválidos. Verifique suas credenciais e tente novamente."
+        } else if (result.error.includes("desativada")) {
+          errorMsg = "Conta desativada. Entre em contato com o suporte."
+        } else {
+          errorMsg = `Erro ao fazer login: ${result.error}`
+        }
+        
         setError(errorMsg)
         showError(errorMsg)
         setIsLoading(false)

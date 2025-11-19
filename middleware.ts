@@ -7,8 +7,14 @@ export function middleware(request: NextRequest) {
   // Proteger rotas do dashboard e admin
   if (pathname.startsWith("/dashboard") || pathname.startsWith("/admin")) {
     // Verificar se existe cookie de sessão do NextAuth
-    // NextAuth v5 usa diferentes nomes de cookie dependendo da configuração
+    // NextAuth v5 usa diferentes nomes de cookie dependendo do ambiente
+    const isProduction = process.env.NODE_ENV === "production"
+    const sessionTokenName = isProduction 
+      ? "__Secure-authjs.session-token"
+      : "authjs.session-token"
+    
     const sessionToken = 
+      request.cookies.get(sessionTokenName)?.value || 
       request.cookies.get("authjs.session-token")?.value || 
       request.cookies.get("__Secure-authjs.session-token")?.value ||
       request.cookies.get("next-auth.session-token")?.value ||

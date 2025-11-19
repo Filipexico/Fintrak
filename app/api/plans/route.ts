@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+export const dynamic = "force-dynamic"
 import { prisma } from "@/lib/prisma"
 import { handleApiError } from "@/lib/utils/errors"
 import { logger } from "@/lib/logger"
@@ -6,6 +7,7 @@ import { logger } from "@/lib/logger"
 // GET - Listar todos os planos ativos
 export async function GET(request: NextRequest) {
   try {
+    logger.info("Buscando planos ativos...")
     const plans = await prisma.plan.findMany({
       where: {
         isActive: true,
@@ -23,6 +25,8 @@ export async function GET(request: NextRequest) {
         maxPlatforms: true,
       },
     })
+
+    logger.info(`Planos encontrados: ${plans.length}`, undefined, { count: plans.length })
 
     return NextResponse.json(plans)
   } catch (error) {

@@ -41,22 +41,58 @@ export function RegisterFormWithPlan({ initialPlan = "free", locale }: RegisterF
   useEffect(() => {
     const fetchPlans = async () => {
       try {
+        console.log("RegisterFormWithPlan - Carregando planos...")
         const result = await apiFetch<Plan[]>("/api/plans")
-        if (result.data) {
-          setPlans(result.data)
-          const planExists = result.data.find((p) => p.name === initialPlan)
-          if (planExists) {
-            setSelectedPlan(initialPlan)
+        console.log("RegisterFormWithPlan - Resultado da API:", result)
+        
+        if (result.error) {
+          console.error("RegisterFormWithPlan - Erro ao carregar planos:", result.error)
+          logger.error("Erro ao carregar planos", undefined, { error: result.error })
+          showError("Erro ao carregar planos. Por favor, recarregue a página.")
+          setLoading(false)
+          return
+        }
+        
+        if (result.data && Array.isArray(result.data)) {
+          // Mapear e garantir que os dados estão corretos
+          const mappedPlans = result.data.map((plan: any) => ({
+            id: plan.id,
+            name: plan.name || "",
+            displayName: plan.displayName || plan.name || "",
+            priceMonthly: plan.priceMonthly || 0,
+            maxVehicles: plan.maxVehicles ?? null,
+            maxPlatforms: plan.maxPlatforms ?? null,
+          })).filter((plan: Plan) => plan.id && plan.name)
+          
+          console.log("RegisterFormWithPlan - Planos mapeados:", mappedPlans)
+          
+          if (mappedPlans.length === 0) {
+            console.warn("RegisterFormWithPlan - Nenhum plano ativo encontrado")
+            showError("Nenhum plano disponível no momento. Entre em contato com o suporte.")
+          } else {
+            setPlans(mappedPlans)
+            const planExists = mappedPlans.find((p) => p.name === initialPlan)
+            if (planExists) {
+              setSelectedPlan(initialPlan)
+            } else if (mappedPlans.length > 0) {
+              // Se o plano inicial não existe, usar o primeiro disponível
+              setSelectedPlan(mappedPlans[0].name)
+            }
           }
+        } else {
+          console.warn("RegisterFormWithPlan - Formato de resposta inválido:", result)
+          showError("Erro ao carregar planos. Por favor, recarregue a página.")
         }
       } catch (error) {
+        console.error("RegisterFormWithPlan - Erro ao carregar planos:", error)
         logger.error("Erro ao carregar planos", error instanceof Error ? error : undefined)
+        showError("Erro ao carregar planos. Por favor, recarregue a página.")
       } finally {
         setLoading(false)
       }
     }
     fetchPlans()
-  }, [initialPlan])
+  }, [initialPlan, showError])
 
   const {
     register,
@@ -124,8 +160,15 @@ export function RegisterFormWithPlan({ initialPlan = "free", locale }: RegisterF
         {/* Plan Selection */}
         <div className="mb-6">
           <Label className="mb-3 block">Escolha seu plano</Label>
+          {plans.length === 0 && !loading && (
+            <div className="rounded-md bg-yellow-50 border border-yellow-200 p-3 mb-4">
+              <p className="text-sm text-yellow-800">
+                Nenhum plano disponível no momento. Entre em contato com o suporte.
+              </p>
+            </div>
+          )}
           <div className="grid gap-3">
-            {plans.map((plan) => (
+            {plans.length > 0 ? plans.map((plan) => (
               <button
                 key={plan.id}
                 type="button"
@@ -163,7 +206,11 @@ export function RegisterFormWithPlan({ initialPlan = "free", locale }: RegisterF
                   )}
                 </div>
               </button>
-            ))}
+            )) : (
+              <div className="text-center py-4 text-muted-foreground text-sm">
+                Nenhum plano disponível
+              </div>
+            )}
           </div>
         </div>
 
