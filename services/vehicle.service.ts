@@ -211,11 +211,17 @@ export async function getCostPerKm(
     ? Number((totalFuelCost / totalDistance).toFixed(4))
     : null
 
+  // Buscar moeda do usuário
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { currency: true },
+  })
+
   return {
     totalDistance: Number(totalDistance.toFixed(2)),
     totalFuelCost: Number(totalFuelCost.toFixed(2)),
     costPerKm,
-    currency: expenses[0]?.currency || "BRL",
+    currency: user?.currency || "BRL",
   }
 }
 

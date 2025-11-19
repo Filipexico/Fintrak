@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatCurrency } from "@/lib/utils/format"
 
 interface CategoryExpense {
   category: string
@@ -35,13 +36,11 @@ const categoryLabels: Record<string, string> = {
 }
 
 export function CategoryChart({ data, currency }: CategoryChartProps) {
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: currency || "BRL",
+  const formatCurrencyValue = (value: number) => {
+    return formatCurrency(value, currency || "BRL", {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
+    })
   }
 
   const chartData = data.map((item) => ({
@@ -60,8 +59,8 @@ export function CategoryChart({ data, currency }: CategoryChartProps) {
           <BarChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="category" />
-            <YAxis tickFormatter={formatCurrency} />
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+            <YAxis tickFormatter={formatCurrencyValue} />
+            <Tooltip formatter={(value: number) => formatCurrencyValue(value)} />
             <Legend />
             <Bar dataKey="total" fill="#ef4444" name="Total" />
           </BarChart>

@@ -184,16 +184,6 @@ function ContactForm() {
                 )}
               </CardContent>
             </Card>
-
-            <div className="mt-8 text-center text-muted-foreground">
-              <p>Ou envie um email diretamente para:</p>
-              <a
-                href="mailto:filipe@filipefrancisco.com"
-                className="text-primary hover:underline font-medium"
-              >
-                filipe@filipefrancisco.com
-              </a>
-            </div>
     </div>
   )
 }

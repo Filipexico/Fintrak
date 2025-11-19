@@ -32,7 +32,11 @@ const navigation = [
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession({
+    required: false,
+    refetchInterval: 0, // Desabilitar refetch automático
+    refetchOnWindowFocus: true, // Refazer quando a janela recebe foco (importante!)
+  })
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleLogout = async () => {

@@ -9,6 +9,7 @@ import {
   Legend,
 } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatCurrency } from "@/lib/utils/format"
 
 interface PlatformIncome {
   platformId: string | null
@@ -34,13 +35,11 @@ const COLORS = [
 ]
 
 export function PlatformChart({ data, currency }: PlatformChartProps) {
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: currency || "BRL",
+  const formatCurrencyValue = (value: number) => {
+    return formatCurrency(value, currency || "BRL", {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
+    })
   }
 
   const chartData = data.map((item) => ({
@@ -74,7 +73,7 @@ export function PlatformChart({ data, currency }: PlatformChartProps) {
                 />
               ))}
             </Pie>
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+            <Tooltip formatter={(value: number) => formatCurrencyValue(value)} />
             <Legend />
           </PieChart>
         </ResponsiveContainer>

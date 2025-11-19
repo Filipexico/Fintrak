@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { formatCurrency } from "@/lib/utils/format"
 
 interface MonthlyData {
   month: string
@@ -25,13 +26,11 @@ interface MonthlyChartProps {
 }
 
 export function MonthlyChart({ data, currency }: MonthlyChartProps) {
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: currency || "BRL",
+  const formatCurrencyValue = (value: number) => {
+    return formatCurrency(value, currency || "BRL", {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
+    })
   }
 
   return (
@@ -44,8 +43,8 @@ export function MonthlyChart({ data, currency }: MonthlyChartProps) {
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
-            <YAxis tickFormatter={formatCurrency} />
-            <Tooltip formatter={(value: number) => formatCurrency(value)} />
+            <YAxis tickFormatter={formatCurrencyValue} />
+            <Tooltip formatter={(value: number) => formatCurrencyValue(value)} />
             <Legend />
             <Line
               type="monotone"

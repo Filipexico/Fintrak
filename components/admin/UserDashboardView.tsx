@@ -7,6 +7,7 @@ import { PlatformChart } from "@/components/charts/PlatformChart"
 import { CategoryChart } from "@/components/charts/CategoryChart"
 import { DollarSign, TrendingUp, TrendingDown, Receipt } from "lucide-react"
 import { format, subMonths, startOfMonth, endOfMonth } from "date-fns"
+import { formatCurrency } from "@/lib/utils/format"
 
 interface FinancialSummary {
   totalIncome: number
@@ -79,13 +80,11 @@ export function UserDashboardView({ userId, currency }: UserDashboardViewProps) 
     fetchData()
   }, [userId, dateRange])
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: currency || "BRL",
+  const formatCurrencyValue = (value: number) => {
+    return formatCurrency(value, currency || "BRL", {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
+    })
   }
 
   if (loading) {
@@ -128,22 +127,22 @@ export function UserDashboardView({ userId, currency }: UserDashboardViewProps) 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <KPICard
           title="Receita Total"
-          value={formatCurrency(summary.totalIncome)}
+          value={formatCurrencyValue(summary.totalIncome)}
           icon={DollarSign}
         />
         <KPICard
           title="Despesas Totais"
-          value={formatCurrency(summary.totalExpenses)}
+          value={formatCurrencyValue(summary.totalExpenses)}
           icon={TrendingDown}
         />
         <KPICard
           title="Lucro Líquido"
-          value={formatCurrency(summary.netProfit)}
+          value={formatCurrencyValue(summary.netProfit)}
           icon={TrendingUp}
         />
         <KPICard
           title="Imposto Estimado"
-          value={formatCurrency(summary.estimatedTax)}
+          value={formatCurrencyValue(summary.estimatedTax)}
           icon={Receipt}
         />
       </div>

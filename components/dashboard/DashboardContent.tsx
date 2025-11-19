@@ -176,13 +176,12 @@ export function DashboardContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange, selectedVehicle])
 
-  const formatCurrency = (value: number, currency: string = "BRL") => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: currency || "BRL",
+  // Usar a função formatCurrency centralizada
+  const formatCurrencyValue = (value: number, currency: string = "BRL") => {
+    return formatCurrency(value, currency, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
+    })
   }
 
   if (loading) {
@@ -264,22 +263,22 @@ export function DashboardContent() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <KPICard
           title="Receita Total"
-          value={formatCurrency(summary.totalIncome, summary.currency)}
+          value={formatCurrencyValue(summary.totalIncome, summary.currency)}
           icon={DollarSign}
         />
         <KPICard
           title="Despesas Totais"
-          value={formatCurrency(summary.totalExpenses, summary.currency)}
+          value={formatCurrencyValue(summary.totalExpenses, summary.currency)}
           icon={TrendingDown}
         />
         <KPICard
           title="Lucro Líquido"
-          value={formatCurrency(summary.netProfit, summary.currency)}
+          value={formatCurrencyValue(summary.netProfit, summary.currency)}
           icon={TrendingUp}
         />
         <KPICard
           title="Imposto Estimado"
-          value={formatCurrency(summary.estimatedTax, summary.currency)}
+          value={formatCurrencyValue(summary.estimatedTax, summary.currency)}
           icon={Receipt}
         />
       </div>
@@ -384,7 +383,7 @@ export function DashboardContent() {
               title="Custo por km"
               value={
                 vehicleMetrics.costPerKm.costPerKm
-                  ? formatCurrency(
+                  ? formatCurrencyValue(
                       vehicleMetrics.costPerKm.costPerKm,
                       vehicleMetrics.costPerKm.currency
                     )
