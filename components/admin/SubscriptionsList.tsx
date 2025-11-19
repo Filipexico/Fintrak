@@ -48,14 +48,35 @@ export function SubscriptionsList() {
 
   const fetchPlans = async () => {
     try {
-      const result = await apiFetch<Array<{ id: string; name: string; displayName: string }>>(
+      const result = await apiFetch<Array<{ id: string; name: string; displayName: string; priceMonthly?: any; maxVehicles?: number | null; maxPlatforms?: number | null; isActive?: boolean }>>(
         "/api/admin/plans"
       )
-      if (result.data) {
-        setPlans(result.data)
+      if (result.error) {
+        console.error("Erro ao carregar planos:", result.error)
+        logger.error("Erro ao carregar planos", undefined, { error: result.error })
+        showError(result.error)
+        return
+      }
+      if (result.data && Array.isArray(result.data)) {
+        // Garantir que temos pelo menos id, name e displayName
+        const mappedPlans = result.data.map((plan: any) => ({
+          id: plan.id,
+          name: plan.name || "",
+          displayName: plan.displayName || plan.name || "",
+        })).filter((plan: any) => plan.id && plan.name)
+        
+        console.log("Planos mapeados:", mappedPlans)
+        logger.info(`Planos carregados: ${mappedPlans.length} planos`)
+        setPlans(mappedPlans)
+      } else {
+        console.warn("Nenhum plano retornado pela API ou formato inválido:", result)
+        logger.warn("Nenhum plano retornado pela API")
+        showError("Erro ao carregar planos. Verifique se os planos estão cadastrados no sistema.")
       }
     } catch (error) {
+      console.error("Erro ao carregar planos:", error)
       logger.error("Erro ao carregar planos", error instanceof Error ? error : undefined)
+      showError("Erro ao carregar planos. Tente novamente.")
     }
   }
 
@@ -191,6 +212,8 @@ export function SubscriptionsList() {
         <Button onClick={async () => {
           // Recarregar planos antes de abrir o formulário
           await fetchPlans()
+          // Aguardar um pouco para garantir que o estado foi atualizado
+          await new Promise(resolve => setTimeout(resolve, 100))
           setEditingSubscription(null)
           setShowForm(true)
         }}>
@@ -208,6 +231,7 @@ export function SubscriptionsList() {
             setEditingSubscription(null)
             fetchSubscriptions()
           }}
+          key={plans.length} // Forçar re-render quando os planos mudarem
         />
       )}
 

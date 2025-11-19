@@ -40,6 +40,14 @@ export function SubscriptionForm({ subscription, plans, onClose }: SubscriptionF
 
   const isEditing = !!subscription
 
+  // Debug: verificar se os planos foram recebidos
+  useEffect(() => {
+    console.log("SubscriptionForm - Planos recebidos:", plans)
+    if (plans.length === 0) {
+      console.warn("SubscriptionForm - Nenhum plano recebido!")
+    }
+  }, [plans])
+
   const {
     register,
     handleSubmit,
