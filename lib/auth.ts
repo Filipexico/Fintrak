@@ -4,6 +4,28 @@ import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 import { UserRole } from "@/lib/constants"
 
+// Validar variáveis de ambiente obrigatórias
+// Usamos apenas NEXTAUTH_SECRET e NEXTAUTH_URL para manter consistência
+const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET
+
+// Verificar se a variável obrigatória está presente
+if (!NEXTAUTH_SECRET) {
+  throw new Error(
+    `❌ Variável de ambiente obrigatória faltando: NEXTAUTH_SECRET\n` +
+    `Por favor, configure esta variável no arquivo .env ou nas variáveis de ambiente do Vercel.\n` +
+    `Para gerar NEXTAUTH_SECRET, execute: openssl rand -base64 32`
+  )
+}
+
+// URL base da aplicação (usado para callbacks e redirecionamentos)
+// Fallback automático: produção usa o domínio Vercel, desenvolvimento usa localhost
+const NEXTAUTH_URL = 
+  process.env.NEXTAUTH_URL || 
+  process.env.AUTH_URL || 
+  (process.env.NODE_ENV === "production" 
+    ? "https://fintrak-omega.vercel.app" 
+    : "http://localhost:3000")
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
@@ -90,8 +112,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
     maxAge: 7 * 24 * 60 * 60, // 7 dias (recomendado para segurança)
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: NEXTAUTH_SECRET,
   trustHost: true, // Necessário para Vercel/produção
+  basePath: "/api/auth", // Caminho base para rotas de autenticação
   cookies: {
     sessionToken: {
       name: process.env.NODE_ENV === "production" 

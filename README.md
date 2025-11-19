@@ -171,12 +171,25 @@ Acesse [http://localhost:3000](http://localhost:3000)
 
 ### Variáveis de Ambiente
 
-| Variável | Descrição | Obrigatório |
-|----------|-----------|-------------|
-| `DATABASE_URL` | URL de conexão do PostgreSQL | Sim |
-| `NEXTAUTH_URL` | URL base da aplicação | Sim |
-| `NEXTAUTH_SECRET` | Chave secreta para JWT | Sim |
-| `NODE_ENV` | Ambiente (development/production) | Não |
+#### 🔴 Obrigatórias
+
+| Variável | Descrição | Exemplo |
+|----------|-----------|---------|
+| `DATABASE_URL` | URL de conexão do PostgreSQL (Neon) | `postgresql://usuario:senha@host:porta/banco?sslmode=require` |
+| `NEXTAUTH_SECRET` | Chave secreta para assinar tokens JWT | Gere com: `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | URL base da aplicação | Local: `http://localhost:3000`<br>Produção: `https://fintrak-omega.vercel.app` |
+
+#### 🟡 Opcionais (para envio de emails)
+
+| Variável | Descrição | Exemplo |
+|----------|-----------|---------|
+| `SMTP_HOST` | Servidor SMTP | `smtp.gmail.com` |
+| `SMTP_PORT` | Porta SMTP | `587` |
+| `SMTP_USER` | Email para autenticação SMTP | `seu-email@gmail.com` |
+| `SMTP_PASS` | Senha de app SMTP | Senha de app do Gmail |
+| `SMTP_FROM` | Email remetente | `noreply@fintrak.com` |
+
+**Nota**: `NODE_ENV` é definido automaticamente pelo Vercel em produção.
 
 ### Scripts Disponíveis
 
@@ -458,25 +471,103 @@ Obtém analytics globais (apenas admin).
 
 ### Vercel (Recomendado)
 
-1. **Instale a CLI da Vercel:**
+#### 1. Preparação
+
+1. **Instale a CLI da Vercel** (opcional):
 ```bash
 npm i -g vercel
 ```
 
-2. **Faça login:**
+2. **Faça login** (se usar CLI):
 ```bash
 vercel login
 ```
 
-3. **Configure as variáveis de ambiente** no dashboard da Vercel:
-   - `DATABASE_URL`
-   - `NEXTAUTH_URL`
-   - `NEXTAUTH_SECRET`
+#### 2. Configurar Variáveis de Ambiente na Vercel
 
-4. **Deploy:**
+⚠️ **CRÍTICO**: Configure estas variáveis antes do primeiro deploy!
+
+1. Acesse o **Vercel Dashboard**: https://vercel.com/dashboard
+2. Selecione seu projeto ou crie um novo
+3. Vá em **Settings** → **Environment Variables**
+4. Adicione as seguintes variáveis:
+
+##### 🔴 Variáveis Obrigatórias
+
+| Variável | Valor (Produção) | Observação |
+|----------|------------------|------------|
+| `DATABASE_URL` | `postgresql://neondb_owner:npg_82yLYliJqpCj@ep-dawn-frog-agjjr2rn-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require` | URL do Neon PostgreSQL |
+| `NEXTAUTH_SECRET` | (Gere com `openssl rand -base64 32`) | **Use a mesma chave usada localmente** |
+| `NEXTAUTH_URL` | `https://fintrak-omega.vercel.app` | ⚠️ Use `https://` (não `http://`) |
+
+##### 🟡 Variáveis Opcionais (para emails)
+
+| Variável | Valor | Observação |
+|----------|-------|------------|
+| `SMTP_HOST` | `smtp.gmail.com` | Servidor SMTP |
+| `SMTP_PORT` | `587` | Porta SMTP |
+| `SMTP_USER` | `seu-email@gmail.com` | Email para autenticação |
+| `SMTP_PASS` | `senha-de-app` | Senha de app do Gmail |
+| `SMTP_FROM` | `noreply@fintrak.com` | Email remetente |
+
+**Importante**: 
+- Selecione os **ambientes** apropriados: Production, Preview, Development
+- Após adicionar/modificar variáveis, faça um **redeploy**
+
+#### 3. Checklist de Configuração para Produção (Vercel)
+
+- [ ] **Gerar `NEXTAUTH_SECRET`** (se ainda não tiver):
+  ```bash
+  openssl rand -base64 32
+  ```
+  
+- [ ] **Configurar `DATABASE_URL`** no Vercel:
+  - Copie a URL do Neon PostgreSQL
+  - Cole no campo `DATABASE_URL` no Vercel
+  
+- [ ] **Configurar `NEXTAUTH_SECRET`** no Vercel:
+  - Use a mesma chave gerada localmente (ou gere uma nova)
+  - Cole no campo `NEXTAUTH_SECRET` no Vercel
+  
+- [ ] **Configurar `NEXTAUTH_URL`** no Vercel:
+  - URL de produção: `https://fintrak-omega.vercel.app`
+  - ⚠️ **IMPORTANTE**: Use `https://` (não `http://`)
+  
+- [ ] (Opcional) **Configurar variáveis SMTP** no Vercel se quiser envio de emails
+
+- [ ] **Fazer redeploy** após configurar as variáveis
+
+#### 4. Deploy
+
+**Via CLI**:
 ```bash
 vercel
 ```
+
+**Via Dashboard**:
+- Conecte seu repositório GitHub/GitLab
+- O Vercel detectará automaticamente Next.js
+- Faça o deploy inicial
+
+#### 5. Verificação Pós-Deploy
+
+1. Acesse: `https://fintrak-omega.vercel.app/login`
+2. Teste o login com credenciais de admin
+3. Verifique se `/api/auth/session` retorna 200 (não 500)
+4. Teste a criação de uma conta
+5. Verifique os logs no Vercel se houver erros
+
+#### 6. Troubleshooting
+
+**Erro 500 em `/api/auth/session`**:
+- Verifique se `NEXTAUTH_SECRET` está configurado no Vercel
+- Verifique se `NEXTAUTH_URL` está correto (use `https://`)
+- Verifique os logs do Vercel: Dashboard → Deployments → Ver logs
+
+**Erro de conexão com banco**:
+- Verifique se `DATABASE_URL` está configurado corretamente
+- Verifique se o Neon permite conexões externas
+- Teste a conexão localmente primeiro
 
 ### Outras Plataformas
 
