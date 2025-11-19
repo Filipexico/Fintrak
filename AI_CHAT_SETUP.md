@@ -102,3 +102,4 @@ Substitua a chamada à API OpenAI em `app/api/chat/route.ts` pela API do seu pro
 - [ ] Suporte a múltiplos idiomas
 - [ ] Integração com sistema de tickets se necessário
 
+

@@ -77,3 +77,4 @@ export function MonthlyChart({ data, currency }: MonthlyChartProps) {
 
 
 
+

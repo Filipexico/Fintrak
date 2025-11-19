@@ -73,3 +73,4 @@ export function CategoryChart({ data, currency }: CategoryChartProps) {
 
 
 
+

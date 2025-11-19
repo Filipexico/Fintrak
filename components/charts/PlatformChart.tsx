@@ -85,3 +85,4 @@ export function PlatformChart({ data, currency }: PlatformChartProps) {
 
 
 
+

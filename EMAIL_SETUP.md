@@ -138,3 +138,4 @@ Os logs de envio de email aparecerão no console do servidor:
 - ⚠️ Aviso: `Email não enviado (SMTP não configurado)`
 - ❌ Erro: `Erro ao enviar email`
 
+

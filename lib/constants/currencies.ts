@@ -80,3 +80,4 @@ export const CURRENCIES_SORTED = [...CURRENCIES].sort((a, b) =>
   a.code.localeCompare(b.code)
 )
 
+

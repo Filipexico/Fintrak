@@ -101,3 +101,4 @@ psql -U filipefrancisco -d motoboy_db -c "SELECT COUNT(*) FROM users; SELECT COU
 
 
 
+
