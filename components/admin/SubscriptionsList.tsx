@@ -188,7 +188,9 @@ export function SubscriptionsList() {
             </option>
           ))}
         </select>
-        <Button onClick={() => {
+        <Button onClick={async () => {
+          // Recarregar planos antes de abrir o formulário
+          await fetchPlans()
           setEditingSubscription(null)
           setShowForm(true)
         }}>

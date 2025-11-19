@@ -160,7 +160,7 @@ export function SubscriptionForm({ subscription, plans, onClose }: SubscriptionF
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="planId">Plano</Label>
+              <Label htmlFor="planId">Plano *</Label>
               <select
                 id="planId"
                 {...register("planId")}
@@ -168,12 +168,21 @@ export function SubscriptionForm({ subscription, plans, onClose }: SubscriptionF
                 disabled={isLoading}
               >
                 <option value="">Selecione um plano</option>
-                {plans.map((plan) => (
-                  <option key={plan.id} value={plan.id}>
-                    {plan.displayName}
-                  </option>
-                ))}
+                {plans.length > 0 ? (
+                  plans.map((plan) => (
+                    <option key={plan.id} value={plan.id}>
+                      {plan.displayName || plan.name}
+                    </option>
+                  ))
+                ) : (
+                  <option value="" disabled>Carregando planos...</option>
+                )}
               </select>
+              {plans.length === 0 && (
+                <p className="text-sm text-muted-foreground">
+                  Nenhum plano cadastrado. Cadastre planos antes de criar assinaturas.
+                </p>
+              )}
               {errors.planId && (
                 <p className="text-sm text-destructive">
                   {(errors.planId as any)?.message}
