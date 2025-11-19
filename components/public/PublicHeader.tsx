@@ -8,13 +8,13 @@ export function PublicHeader() {
   return (
     <header className="border-b bg-background shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/home" className="flex items-center hover:opacity-80 transition-opacity p-2 md:p-3">
+        <Link href="/home" className="flex items-center hover:opacity-80 transition-opacity">
           <Image 
             src="/imagens/fintrak_transparente.png" 
             alt="Fintrak" 
-            width={743} 
-            height={170}
-            className="h-[120px] md:h-[170px] w-[575px] md:w-[743px] object-contain min-w-[507px] md:min-w-[743px]"
+            width={330} 
+            height={75}
+            className="h-10 md:h-12 w-auto object-contain"
             priority
           />
         </Link>

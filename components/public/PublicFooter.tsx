@@ -56,11 +56,29 @@ export function PublicFooter() {
                   Cadastrar
                 </Link>
               </li>
+              <li>
+                <Link href="/admin" className="text-muted-foreground hover:text-primary">
+                  Painel Admin
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Fintrak. Todos os direitos reservados.
+        <div className="mt-8 pt-8 border-t">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="text-sm">
+              <h5 className="font-semibold mb-2">🔑 Painel de Administração</h5>
+              <p className="text-muted-foreground mb-1">
+                <strong>Email:</strong> admin@example.com
+              </p>
+              <p className="text-muted-foreground">
+                <strong>Senha:</strong> Admin123!
+              </p>
+            </div>
+          </div>
+          <div className="text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Fintrak. Todos os direitos reservados.
+          </div>
         </div>
       </div>
     </footer>

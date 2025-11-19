@@ -58,14 +58,14 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       >
         <div className="flex h-full flex-col">
           {/* Logo/Header */}
-          <div className="flex h-16 items-center justify-between border-b border-border px-6">
-            <Link href="/home" className="hover:opacity-80 transition-opacity flex items-center p-2 md:p-3">
+          <div className="flex h-16 items-center justify-between border-b border-border px-4">
+            <Link href="/home" className="hover:opacity-80 transition-opacity flex items-center">
               <Image 
                 src="/imagens/fintrak_transparente.png" 
                 alt="Fintrak Admin" 
-                width={743} 
-                height={170}
-                className="h-[120px] md:h-[170px] w-[575px] md:w-[743px] object-contain min-w-[507px] md:min-w-[743px]"
+                width={330} 
+                height={75}
+                className="h-10 w-auto object-contain"
                 priority
               />
             </Link>
@@ -141,13 +141,13 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
           >
             <Menu className="h-6 w-6" />
           </button>
-          <Link href="/home" className="flex items-center hover:opacity-80 transition-opacity p-2">
+          <Link href="/home" className="flex items-center hover:opacity-80 transition-opacity">
             <Image 
               src="/imagens/fintrak_transparente.png" 
               alt="Fintrak Admin" 
-              width={575} 
-              height={129}
-              className="h-[120px] w-[575px] object-contain min-w-[507px]"
+              width={275} 
+              height={62}
+              className="h-8 w-auto object-contain"
             />
           </Link>
         </header>

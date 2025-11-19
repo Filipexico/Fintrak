@@ -41,7 +41,7 @@ export function LoginForm() {
       })
 
       if (result?.error) {
-        const errorMsg = result.error
+        const errorMsg = result.error || "Email ou senha inválidos. Por favor, verifique suas credenciais e tente novamente."
         setError(errorMsg)
         showError(errorMsg)
         setIsLoading(false)
@@ -64,7 +64,9 @@ export function LoginForm() {
       
       router.refresh()
     } catch (err) {
-      setError("Erro ao fazer login. Tente novamente.")
+      const errorMsg = "Erro ao fazer login. Por favor, verifique suas credenciais e tente novamente."
+      setError(errorMsg)
+      showError(errorMsg)
       setIsLoading(false)
     }
   }
