@@ -12,5 +12,10 @@ export const prisma =
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma
 
+// Testar conexão ao inicializar
+prisma.$connect().catch((error) => {
+  console.error("❌ Erro ao conectar com o banco de dados:", error)
+})
+
 
 

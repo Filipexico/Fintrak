@@ -12,36 +12,56 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error("Email e senha são obrigatórios")
-        }
+        try {
+          console.log("🔐 Tentativa de login para:", credentials?.email)
+          
+          if (!credentials?.email || !credentials?.password) {
+            console.error("❌ Credenciais faltando")
+            throw new Error("Email e senha são obrigatórios")
+          }
 
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email as string },
-        })
+          console.log("📊 Buscando usuário no banco...")
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email as string },
+          })
 
-        if (!user) {
-          throw new Error("Email ou senha inválidos")
-        }
+          if (!user) {
+            console.error("❌ Usuário não encontrado:", credentials.email)
+            throw new Error("Email ou senha inválidos")
+          }
 
-        if (!user.isActive) {
-          throw new Error("Conta desativada. Entre em contato com o suporte.")
-        }
+          console.log("✅ Usuário encontrado:", user.email, "Ativo:", user.isActive)
 
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password as string,
-          user.password
-        )
+          if (!user.isActive) {
+            console.error("⚠️ Conta desativada:", user.email)
+            throw new Error("Conta desativada. Entre em contato com o suporte.")
+          }
 
-        if (!isPasswordValid) {
-          throw new Error("Email ou senha inválidos")
-        }
+          console.log("🔒 Verificando senha...")
+          const isPasswordValid = await bcrypt.compare(
+            credentials.password as string,
+            user.password
+          )
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
+          if (!isPasswordValid) {
+            console.error("❌ Senha inválida para:", user.email)
+            throw new Error("Email ou senha inválidos")
+          }
+
+          console.log("✅ Login bem-sucedido para:", user.email, "Role:", user.role)
+          
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          }
+        } catch (error) {
+          console.error("❌ Erro no authorize:", error)
+          if (error instanceof Error) {
+            throw error
+          }
+          throw new Error("Erro ao fazer login. Tente novamente.")
         }
       },
     }),

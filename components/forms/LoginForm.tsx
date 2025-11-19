@@ -45,17 +45,24 @@ export function LoginForm() {
 
       if (result?.error) {
         console.error("Login error:", result.error)
-        let errorMsg = result.error || "Email ou senha inválidos. Por favor, verifique suas credenciais e tente novamente."
+        console.error("Full result:", result)
+        
+        let errorMsg = "Email ou senha inválidos. Verifique suas credenciais e tente novamente."
         
         // Mensagens de erro mais específicas
-        if (result.error.includes("credentials") || result.error.includes("Email ou senha")) {
-          errorMsg = "Email ou senha inválidos. Verifique suas credenciais e tente novamente."
-        } else if (result.error.includes("desativada")) {
-          errorMsg = "Conta desativada. Entre em contato com o suporte."
-        } else {
-          errorMsg = `Erro ao fazer login: ${result.error}`
+        if (result.error) {
+          if (result.error.includes("Email ou senha") || result.error.includes("inválidos")) {
+            errorMsg = "❌ Email ou senha inválidos. Verifique suas credenciais e tente novamente."
+          } else if (result.error.includes("desativada")) {
+            errorMsg = "⚠️ Conta desativada. Entre em contato com o suporte."
+          } else if (result.error.includes("obrigatórios")) {
+            errorMsg = "⚠️ Email e senha são obrigatórios."
+          } else {
+            errorMsg = `❌ Erro: ${result.error}`
+          }
         }
         
+        console.error("Erro final a exibir:", errorMsg)
         setError(errorMsg)
         showError(errorMsg)
         setIsLoading(false)
@@ -78,7 +85,10 @@ export function LoginForm() {
       
       router.refresh()
     } catch (err) {
-      const errorMsg = "Erro ao fazer login. Por favor, verifique suas credenciais e tente novamente."
+      console.error("Erro no catch do login:", err)
+      const errorMsg = err instanceof Error 
+        ? `Erro ao fazer login: ${err.message}` 
+        : "Erro ao fazer login. Por favor, verifique suas credenciais e tente novamente."
       setError(errorMsg)
       showError(errorMsg)
       setIsLoading(false)
@@ -86,24 +96,26 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <div className="flex items-center justify-between mb-2">
+    <div className="w-full max-w-md space-y-4">
+      <Link href="/home">
+        <Button variant="outline" className="gap-2 mb-4">
+          <ArrowLeft className="h-4 w-4" />
+          Voltar para a página inicial
+        </Button>
+      </Link>
+      <Card className="w-full max-w-md">
+        <CardHeader>
           <CardTitle>Login</CardTitle>
-          <Link href="/home">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Voltar
-            </Button>
-          </Link>
-        </div>
-        <CardDescription>Entre com suas credenciais</CardDescription>
-      </CardHeader>
-      <CardContent>
+          <CardDescription>Entre com suas credenciais</CardDescription>
+        </CardHeader>
+        <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive">
-              {error}
+            <div className="rounded-md bg-destructive/15 border border-destructive/50 p-4 text-sm text-destructive font-medium">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">⚠️</span>
+                <span>{error}</span>
+              </div>
             </div>
           )}
 
@@ -161,6 +173,7 @@ export function LoginForm() {
         </div>
       </CardContent>
     </Card>
+    </div>
   )
 }
 
