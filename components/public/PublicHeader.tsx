@@ -7,14 +7,14 @@ import Image from "next/image"
 export function PublicHeader() {
   return (
     <header className="border-b bg-background shadow-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-32 md:h-36 items-center justify-between px-4">
         <Link href="/home" className="flex items-center hover:opacity-80 transition-opacity">
           <Image 
             src="/imagens/fintrak_transparente.png" 
             alt="Fintrak" 
             width={330} 
             height={75}
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-28 md:h-32 w-auto object-contain"
             priority
           />
         </Link>

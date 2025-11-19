@@ -66,14 +66,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       >
         <div className="flex h-full flex-col">
           {/* Logo/Header */}
-          <div className="flex h-16 items-center justify-between border-b border-border px-4">
+          <div className="flex h-20 items-center justify-between border-b border-border px-4">
             <Link href="/home" className="hover:opacity-80 transition-opacity flex items-center">
               <Image 
                 src="/imagens/fintrak_transparente.png" 
                 alt="Fintrak" 
                 width={330} 
                 height={75}
-                className="h-10 w-auto object-contain"
+                className="h-20 w-auto object-contain"
                 priority
               />
             </Link>
@@ -141,7 +141,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top bar (mobile) */}
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border bg-background px-4 shadow-sm lg:hidden">
+        <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b border-border bg-background px-4 shadow-sm lg:hidden">
           <button
             onClick={() => setSidebarOpen(true)}
             className="p-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -155,7 +155,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               alt="Fintrak" 
               width={275} 
               height={62}
-              className="h-8 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </Link>
         </header>
